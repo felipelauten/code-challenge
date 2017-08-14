@@ -4,6 +4,6 @@ You have received this challenge as part of the recruiting process for HSBC. The
 
 You have 7 days to complete this challenge but it shouldn't take you longer than a few hours. Please send it back as soon as you're done.
 
-For developer code-challenge see: [README - DEVELOPERS.md](README - DEVELOPERS.md)
+For developer code-challenge see: [README-DEVELOPERS.md](README - DEVELOPERS.md)
 
-For tester code-challenge see: [README - TESTERS.md](README - TESTERS.md)
+For tester code-challenge see: [README-TESTERS.md](README - TESTERS.md)
