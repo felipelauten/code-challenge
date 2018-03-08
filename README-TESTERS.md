@@ -6,7 +6,7 @@ You have 7 days to complete this challenge but it shouldn't take you longer than
 
 ## Description
 
-Using tools of your choice (preferable JAVA, Groovy...) write test scenarios (given below) for the entire site: https://github.com/ or just an API https://developer.github.com/v3
+Using tools of your choice from JAVA stack write test scenarios (given below) for the entire site: https://github.com/ or just an API https://developer.github.com/v3
 
 ## Scenarios
 
