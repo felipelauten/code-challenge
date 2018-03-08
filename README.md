@@ -9,3 +9,5 @@ For developer code-challenge see: [README-DEVELOPERS.md](README-DEVELOPERS.md)
 For frontend code-challenge see: [README-FRONTEND.md](README-FRONTEND.md)
 
 For tester code-challenge see: [README-TESTERS.md](README-TESTERS.md)
+
+For mobile code-challenge see: [README-MOBILE.md](README-MOBILE.md)
