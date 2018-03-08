@@ -1,4 +1,4 @@
-# Mobile challange 2
+# Mobile challange
 
 ## Description
 Build a simple image gallery application, using publicly available API. The application should support the scenarios below.
