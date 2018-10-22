@@ -1,4 +1,4 @@
-# Frontend challange
+# Frontend challenge
 
 ## Description
 Build a simple social networking application, similar to Twitter, using publicly available API. The application should support the scenarios below.
@@ -48,6 +48,6 @@ Please use TypeScript version of Bootstrap (ngx-bootstrap).
 https://jsonplaceholder.typicode.com/
 ```
 
-## DESING
+## DESIGN
 
 ![Design](/desing.png)
