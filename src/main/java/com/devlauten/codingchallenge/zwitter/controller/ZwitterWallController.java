@@ -31,10 +31,7 @@ public class ZwitterWallController {
 
         ZwitterUser user = zwitterUserService.getUserWithZwitts(zwitter);
 
-        List<Zwitt> zwitts = new ArrayList<>();
-        for (Zwitt zwitt : user.getZwitts()) {
-            zwitts.add(zwitt);
-        }
+        List<Zwitt> zwitts = user.getZwitts();
         zwitts.sort(Comparator.comparing((Zwitt::getCreatedOn)).reversed());
 
         return zwitts;
