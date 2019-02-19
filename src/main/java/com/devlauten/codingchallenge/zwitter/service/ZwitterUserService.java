@@ -12,4 +12,6 @@ public interface ZwitterUserService {
     ZwitterUser getUser(String handle) throws BusinessException;
 
     ZwitterUser getUserWithZwitts(String handle) throws BusinessException;
+
+    void follow(String followerHandle, String followedHandle) throws BusinessException;
 }

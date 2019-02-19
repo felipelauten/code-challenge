@@ -59,4 +59,15 @@ public class ZwitterUserServiceImpl implements ZwitterUserService {
 
         return user;
     }
+
+    @Override
+    @Transactional
+    public void follow(String followerHandle, String followedHandle) throws BusinessException {
+        ZwitterUser follower = getUser(followerHandle);
+        ZwitterUser followed = getUser(followedHandle);
+
+        followed.addFollower(follower);
+
+        repository.save(followed);
+    }
 }
