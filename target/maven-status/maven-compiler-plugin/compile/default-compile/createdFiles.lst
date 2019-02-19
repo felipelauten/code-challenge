@@ -5,8 +5,11 @@ com\devlauten\codingchallenge\zwitter\vo\ZwitterUser.class
 com\devlauten\codingchallenge\zwitter\repository\ZwittRepository.class
 com\devlauten\codingchallenge\zwitter\service\impl\ZwitterUserServiceImpl.class
 com\devlauten\codingchallenge\zwitter\service\ZwitterUserService.class
+com\devlauten\codingchallenge\zwitter\controller\ZwitterWallController.class
 com\devlauten\codingchallenge\zwitter\exception\BusinessException.class
-com\devlauten\codingchallenge\zwitter\controller\events\RequestEvent.class
+com\devlauten\codingchallenge\zwitter\controller\aspect\ZwitterExceptionHandler.class
+com\devlauten\codingchallenge\zwitter\controller\ZwitterFollowController.class
+com\devlauten\codingchallenge\zwitter\controller\events\base\RequestEvent.class
 com\devlauten\codingchallenge\zwitter\vo\Zwitt.class
 com\devlauten\codingchallenge\zwitter\repository\ZwitterUserRepository.class
 com\devlauten\codingchallenge\zwitter\service\ZwittService.class

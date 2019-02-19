@@ -4,10 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "USERS")
@@ -27,6 +24,16 @@ public class ZwitterUser {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH, mappedBy = "zwitter")
     private List<Zwitt> zwitts;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "ZWITTER_FOLLOW",
+        joinColumns = {
+            @JoinColumn(name = "zwitter_id_1")
+        }, inverseJoinColumns = {
+            @JoinColumn(name = "zwitter_id_2")
+        }
+    )
+    private Set<ZwitterUser> followList;
 
     public ZwitterUser() {
         this.createdOn = new Date();
@@ -80,6 +87,17 @@ public class ZwitterUser {
             this.zwitts = new ArrayList<>();
         }
         this.zwitts.add(zwitt);
+    }
+
+    /**
+     * Adds a new follower to this ZwitterUser
+     * @param follower to be added
+     */
+    public void addFollower(ZwitterUser follower) {
+        if (this.followList == null) {
+            this.followList = new HashSet<>();
+        }
+        this.followList.add(follower);
     }
 
     @Override

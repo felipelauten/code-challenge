@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class ZwittServiceImpl implements ZwittService {
 
@@ -23,6 +25,7 @@ public class ZwittServiceImpl implements ZwittService {
     private ZwitterUserService zwitterUserService;
 
     @Override
+    @Transactional
     public Long createZwitt(String handle, String text) throws BusinessException {
         ZwitterUser zwitter = zwitterUserService.getUser(handle); // This already throws if not found
 
