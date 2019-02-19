@@ -1,0 +1,8 @@
+package com.devlauten.codingchallenge.zwitter.exception;
+
+public class BusinessException extends Exception {
+
+    public BusinessException(String message) {
+        super(message);
+    }
+}
