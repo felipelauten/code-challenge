@@ -1,5 +1,6 @@
 package com.devlauten.codingchallenge.zwitter.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -10,7 +11,8 @@ import java.util.Date;
 public class Zwitt {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "zwitter")
+    @JoinColumn(name = "zwitter_id")
+    @JsonIgnore
     public ZwitterUser zwitter;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ZWITT_SEQ")

@@ -10,4 +10,6 @@ public interface ZwitterUserService {
     void createUser(String handle) throws BusinessException;
 
     ZwitterUser getUser(String handle) throws BusinessException;
+
+    ZwitterUser getUserWithZwitts(String handle) throws BusinessException;
 }

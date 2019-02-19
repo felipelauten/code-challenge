@@ -4,7 +4,9 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +24,9 @@ public class ZwitterUser {
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH, mappedBy = "zwitter")
+    private List<Zwitt> zwitts;
 
     public ZwitterUser() {
         this.createdOn = new Date();
@@ -57,6 +62,24 @@ public class ZwitterUser {
 
     public Date getCreatedOn() {
         return createdOn;
+    }
+
+    /**
+     * Retrieve user Zwitts
+     */
+    public List<Zwitt> getZwitts() {
+        return this.zwitts;
+    }
+
+    /**
+     * Adds a new Zwitt to user zwitts collection
+     * @param zwitt to be added
+     */
+    public void addZwitt(Zwitt zwitt) {
+        if (this.zwitts == null) {
+            this.zwitts = new ArrayList<>();
+        }
+        this.zwitts.add(zwitt);
     }
 
     @Override

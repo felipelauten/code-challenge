@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,7 @@ public class ZwitterUserServiceImpl implements ZwitterUserService {
     }
 
     @Override
+    @Transactional
     public void createUser(String handle) throws BusinessException {
         if (this.isExistingUser(handle)) {
             throw new BusinessException(String.format("Zwitter user %s already exists!", handle));
@@ -46,5 +48,15 @@ public class ZwitterUserServiceImpl implements ZwitterUserService {
             throw new BusinessException(String.format("Zwitter user %s doesn't exist!", handle));
         }
         return result.get();
+    }
+
+    @Override
+    public ZwitterUser getUserWithZwitts(String handle) throws BusinessException {
+        ZwitterUser user = getUser(handle);
+
+        // Load lazy Zwitts
+        user.getZwitts();
+
+        return user;
     }
 }

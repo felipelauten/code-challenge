@@ -7,10 +7,8 @@ import com.devlauten.codingchallenge.zwitter.service.ZwitterUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("")
@@ -24,7 +22,8 @@ public class ZwitterUserController {
     private ZwittService zwittService;
 
     @RequestMapping(value = "/{handle}/compose", method = RequestMethod.POST)
-    public void compose(@PathVariable("handle") final String handle, final ComposeZwittRequestEvent composedZwitt)
+    @ResponseStatus(HttpStatus.OK)
+    public Long compose(@PathVariable("handle") final String handle, final ComposeZwittRequestEvent composedZwitt)
             throws BusinessException {
 
         LOGGER.debug(String.format("Composing new Tweet for user %s", handle));
@@ -35,6 +34,8 @@ public class ZwitterUserController {
         }
 
         // Creates the Zwitt
-        zwittService.createZwitt(handle, composedZwitt.getPayload());
+        Long zwittId = zwittService.createZwitt(handle, composedZwitt.getPayload());
+
+        return zwittId;
     }
 }

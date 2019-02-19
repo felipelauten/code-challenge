@@ -11,5 +11,5 @@ public interface ZwittService {
      * @param text
      * @throws BusinessException
      */
-    void createZwitt(String handle, String text) throws BusinessException;
+    Long createZwitt(String handle, String text) throws BusinessException;
 }

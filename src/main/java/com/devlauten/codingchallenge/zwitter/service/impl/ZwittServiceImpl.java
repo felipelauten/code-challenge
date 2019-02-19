@@ -23,7 +23,7 @@ public class ZwittServiceImpl implements ZwittService {
     private ZwitterUserService zwitterUserService;
 
     @Override
-    public void createZwitt(String handle, String text) throws BusinessException {
+    public Long createZwitt(String handle, String text) throws BusinessException {
         ZwitterUser zwitter = zwitterUserService.getUser(handle); // This already throws if not found
 
         if (text == null || text.equals("")) {
@@ -35,5 +35,7 @@ public class ZwittServiceImpl implements ZwittService {
 
         Zwitt newZwitt = new Zwitt(zwitter, text);
         repository.save(newZwitt);
+
+        return newZwitt.getId();
     }
 }
