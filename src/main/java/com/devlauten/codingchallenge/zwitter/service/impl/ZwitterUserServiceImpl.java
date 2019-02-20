@@ -67,7 +67,9 @@ public class ZwitterUserServiceImpl implements ZwitterUserService {
         ZwitterUser followed = getUser(followedHandle);
 
         followed.addFollower(follower);
+        follower.follow(followed);
 
         repository.save(followed);
+        repository.save(follower);
     }
 }

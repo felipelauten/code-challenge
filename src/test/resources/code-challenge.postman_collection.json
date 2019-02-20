@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "a8c3c36c-a37c-4192-87d4-9489e93f4db2",
+		"name": "code-challenge Copy",
+		"description": "Code challenge github (felipelauten)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post a Zwitt",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "Hello World, this is a first #zwitt from @felipelauten!",
+							"description": "The Zwitt text (less than 140 chars)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/felipelauten/compose",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"felipelauten",
+						"compose"
+					]
+				},
+				"description": "Post a Zwitt and create user if it doesn't exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Zwitt with Zwitter2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "Hello World, this is a first #zwitt from @hsbc!",
+							"description": "The Zwitt text (less than 140 chars)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/hsbc/compose",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"hsbc",
+						"compose"
+					]
+				},
+				"description": "Post a Zwitt and create user if it doesn't exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Zwitt with Zwitter3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "Hello World, this is a first #zwitt from @devLauten!",
+							"description": "The Zwitt text (less than 140 chars)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/devLauten/compose",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"devLauten",
+						"compose"
+					]
+				},
+				"description": "Post a Zwitt and create user if it doesn't exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Zwitt with Zwitter4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "text",
+							"value": "Hello World, this is a first #zwitt from @coolGuy!",
+							"description": "The Zwitt text (less than 140 chars)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/coolGuy/compose",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"coolGuy",
+						"compose"
+					]
+				},
+				"description": "Post a Zwitt and create user if it doesn't exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Wall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/felipelauten/wall",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"felipelauten",
+						"wall"
+					]
+				},
+				"description": "Get user zwitts"
+			},
+			"response": []
+		},
+		{
+			"name": "Follow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/follow?by=hsbc&who=felipelauten",
+					"host": [
+						"http://localhost:8080"
+					],
+					"path": [
+						"follow"
+					],
+					"query": [
+						{
+							"key": "by",
+							"value": "hsbc"
+						},
+						{
+							"key": "who",
+							"value": "felipelauten"
+						}
+					]
+				},
+				"description": "Adding a new Follower."
+			},
+			"response": []
+		}
+	]
+}
