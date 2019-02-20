@@ -51,15 +51,29 @@
     </changeSet>
 
     <changeSet id="v1.0.0-003" author="flautenschlager">
-        <comment>Adding following capabilities</comment>
-        <createTable tableName="ZWITTER_FOLLOW">
+        <comment>Adding followers' capabilities</comment>
+        <createTable tableName="ZWITTER_FOLLOWERS">
             <column name="zwitter_id_1" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="PK_FOLLOW" references="USERS(id)"
-                             foreignKeyName="FK_ZWITTER_ID_1"/>
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWER" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_1_1"/>
             </column>
             <column name="zwitter_id_2" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="PK_FOLLOW" references="USERS(id)"
-                             foreignKeyName="FK_ZWITTER_ID_2" />
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWER" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_1_2" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v1.0.0-004" author="flautenschlager">
+        <comment>Adding following capabilities</comment>
+        <createTable tableName="ZWITTER_FOLLOWING">
+            <column name="zwitter_id_1" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWING" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_2_1"/>
+            </column>
+            <column name="zwitter_id_2" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWING" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_2_2" />
             </column>
         </createTable>
     </changeSet>

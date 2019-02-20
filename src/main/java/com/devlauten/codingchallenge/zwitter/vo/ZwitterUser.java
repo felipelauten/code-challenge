@@ -26,14 +26,24 @@ public class ZwitterUser {
     private List<Zwitt> zwitts;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "ZWITTER_FOLLOW",
+    @JoinTable(name = "ZWITTER_FOLLOWERS",
         joinColumns = {
             @JoinColumn(name = "zwitter_id_1")
         }, inverseJoinColumns = {
             @JoinColumn(name = "zwitter_id_2")
         }
     )
-    private Set<ZwitterUser> followList;
+    private Set<ZwitterUser> followers;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "ZWITTER_FOLLOWING",
+            joinColumns = {
+                    @JoinColumn(name = "zwitter_id_1")
+            }, inverseJoinColumns = {
+            @JoinColumn(name = "zwitter_id_2")
+    }
+    )
+    private Set<ZwitterUser> following;
 
     public ZwitterUser() {
         this.createdOn = new Date();
@@ -94,10 +104,17 @@ public class ZwitterUser {
      * @param follower to be added
      */
     public void addFollower(ZwitterUser follower) {
-        if (this.followList == null) {
-            this.followList = new HashSet<>();
+        if (this.followers == null) {
+            this.followers = new HashSet<>();
         }
-        this.followList.add(follower);
+        this.followers.add(follower);
+    }
+
+    public void follow(ZwitterUser toFollow) {
+        if (this.following == null) {
+            this.following = new HashSet<>();
+        }
+        this.following.add(toFollow);
     }
 
     @Override
