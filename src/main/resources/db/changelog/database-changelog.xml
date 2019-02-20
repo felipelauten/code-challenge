@@ -1,0 +1,80 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="v1.0.0-001" author="flautenschlager">
+        <comment>Zwitter users table</comment>
+        <createTable tableName="USERS">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="USERS_PK"/>
+            </column>
+            <column name="handle" type="VARCHAR(30)">
+                <constraints unique="true" uniqueConstraintName="HANDLE_UNIQUE_NAME"
+                             nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(150)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="avatar_url" type="VARCHAR(1000)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="USERS" indexName="IDX_ZWITTER_HANDLE">
+            <column name="handle" type="VARCHAR(30)"/>
+        </createIndex>
+        <createSequence sequenceName="USER_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="v1.0.0-002" author="flautenschlager">
+        <comment>Create Zwits (the user post)</comment>
+        <createTable tableName="ZWITTS">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ZWITS_PK"/>
+            </column>
+            <column name="text" type="VARCHAR(140)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zwitter_id" type="BIGINT">
+                <constraints references="USERS(id)" foreignKeyName="FK_ZWITT_USER" nullable="false"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createSequence sequenceName="ZWITT_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="v1.0.0-003" author="flautenschlager">
+        <comment>Adding followers' capabilities</comment>
+        <createTable tableName="ZWITTER_FOLLOWERS">
+            <column name="zwitter_id_1" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWER" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_1_1"/>
+            </column>
+            <column name="zwitter_id_2" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWER" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_1_2" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v1.0.0-004" author="flautenschlager">
+        <comment>Adding following capabilities</comment>
+        <createTable tableName="ZWITTER_FOLLOWING">
+            <column name="zwitter_id_1" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWING" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_2_1"/>
+            </column>
+            <column name="zwitter_id_2" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_FOLLOWING" references="USERS(id)"
+                             foreignKeyName="FK_ZWITTER_ID_2_2" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
