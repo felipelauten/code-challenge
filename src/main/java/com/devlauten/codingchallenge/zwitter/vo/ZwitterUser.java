@@ -88,6 +88,14 @@ public class ZwitterUser {
         return this.zwitts;
     }
 
+    public Set<ZwitterUser> getFollowers() {
+        return followers;
+    }
+
+    public Set<ZwitterUser> getFollowing() {
+        return following;
+    }
+
     /**
      * Adds a new Zwitt to user zwitts collection
      * @param zwitt to be added

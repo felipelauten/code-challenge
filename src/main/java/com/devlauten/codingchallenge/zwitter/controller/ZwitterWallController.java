@@ -29,7 +29,7 @@ public class ZwitterWallController {
     public List<Zwitt> getZwitterWall(@PathVariable("zwitter") final String zwitter) throws BusinessException {
         LOGGER.debug("Retrieving wall for zwitter user " + zwitter);
 
-        ZwitterUser user = zwitterUserService.getUserWithZwitts(zwitter);
+            ZwitterUser user = zwitterUserService.getUserWithZwitts(zwitter);
 
         List<Zwitt> zwitts = user.getZwitts();
         zwitts.sort(Comparator.comparing((Zwitt::getCreatedOn)).reversed());
